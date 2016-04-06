@@ -43,6 +43,14 @@
 .tip .arrow.top{top:-20px;left:40px;}
 .tip .arrow.top .inner{top:15px;left:0px;}
 
+/*数据选择组件*/
+.number{overflow:hidden;border:1px solid #a1a1a1;display:inline-block;height:30px;}
+.number a,.number input{display:inline-block;text-align:center;height:100%;float:left;}
+.number input{background-color:#fff;border:none;width:60px;font-size:18px;font-weight:800;}
+.number a{background-color:#ededed;font-size:24px;font-weight:800;width:30px;padding:5px 0 0;}
+.number a.left{border-right: 1px solid #a1a1a1;} 
+.number a.right{border-left: 1px solid #a1a1a1;}
+
 /*分页*/
 .page_number{text-align:center;padding:10px 0 20px;}
 .page_number li{display:inline-block;padding:5px 10px;}
@@ -94,10 +102,6 @@
 .mod-platform .item li{float:left;margin:11px;}
 
 /*==================下一步业务模块==================================*/
-.number{overflow:hidden;border:1px solid #a1a1a1;display:inline-block;height:30px;}
-.number a,.number input{display:inline-block;text-align:center;height:100%;float:left;}
-.number input{background-color:#fff;border:none;width:60px;font-size:18px;font-weight:800;}
-.number a{background-color:#ededed;font-size:24px;font-weight:800;width:30px;padding:5px 0 0;}
 
 /*mod-next*/
 .mod-next{}
