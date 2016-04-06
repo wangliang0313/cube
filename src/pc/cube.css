@@ -7,7 +7,7 @@
 .ui-card{margin:0 0 10px;background-color:#fff;border:1px solid #e1e1e1;}
 
 /*tab通用样式*/
-.ui-tab{background-color:#f9f9f9;}
+.ui-tab{background-color:#f9f9f9;overflow: hidden;}
 .ui-tab:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
 .ui-tab li{padding:20px;display:inline-block;font-size:16px;background-color:#fff;float:left;text-align:center;border-left:1px solid #e1e1e1;border-bottom:1px solid #e1e1e1;background-color:#f9f9f9;cursor:pointer;}
 .ui-tab li:first-child{border-left:none;}
@@ -15,8 +15,8 @@
 .ui-tab.no3 li{width:33.1%;padding:20px 0;}
 
 /*btn样式*/
-.btn{display:inline-block;margin:0 10px;line-height:16px;border-radius:3px;border:1px solid #a1a1a1;background-color:#ededed;padding:6px 10px;}
-.btn.blue{border-radius:3px;background-color:#0ea4fb;color:#fff;height:40px;line-height:40px;cursor:pointer;font-size:20px;}
+.btn{display:inline-block;cursor:pointer;margin:0 10px;line-height:16px;border-radius:3px;border:1px solid #a1a1a1;background-color:#ededed;padding:6px 10px;}
+.btn.blue{border-radius:3px;background-color:#0ea4fb;color:#fff;line-height:50px;font-size:20px;padding:0 84px;}
 
 /*ico*/
 .ico{background:no-repeat url("bg_ico.png");width:16px;height:16px;display:inline-block;float:left;margin:0 3px 0 0;}
@@ -46,10 +46,18 @@
 /*数据选择组件*/
 .number{overflow:hidden;border:1px solid #a1a1a1;display:inline-block;height:30px;}
 .number a,.number input{display:inline-block;text-align:center;height:100%;float:left;}
-.number input{background-color:#fff;border:none;width:60px;font-size:18px;font-weight:800;}
-.number a{background-color:#ededed;font-size:24px;font-weight:800;width:30px;padding:5px 0 0;}
+.number input{background-color:#fff;border:none;width:60px;font-size:18px;font-weight:500;}
+.number a{background-color:#ededed;font-size:24px;font-weight:500;width:30px;padding:5px 0 0;}
 .number a.left{border-right: 1px solid #a1a1a1;} 
 .number a.right{border-left: 1px solid #a1a1a1;}
+
+/*通用蒙版样式*/
+.mask{left:0;top:0;width: 100%;height: 100%;position: fixed;z-index: 1000;opacity:.666;background-color: #000;}
+/*通用弹层样式*/
+.layer{position: absolute;min-width: 400px;z-index: 1001;background-color: #fff;border-radius: 5px;padding: 0;}
+.layer .hd{background-color: #0ea4fb;font-size: 24px;line-height: 96px;text-align: center;color: #fff;border-radius: 3px 3px 0 0;}
+.layer .bd{}
+.layer .ft{}
 
 /*分页*/
 .page_number{text-align:center;padding:10px 0 20px;}
@@ -62,16 +70,16 @@
 .ad-top{padding:24px 28px;line-height:24px;}
 .ad-top section{float:left;}
 .ad-top tools{float:right;margin:5px;}
-.ad-top h3{font-weight:800;font-size:24px;}
+.ad-top h3{font-weight:500;font-size:24px;}
 .ad-top em{font-size:13px;padding:0 10px 0 0;}
 .media{width:190px;height:118px;overflow:hidden;text-align:center;line-height:110px;border-radius:3px;border:1px solid transparent;}
 .media.center img{max-width:100%;max-height:100%;}
 
 /*mod-works*/
-.mod-works{min-height:300px;margin:0 0 50px;}
+.mod-works{min-height:300px;margin:0 0 50px;line-height: 14px;}
 .mod-works .row{padding:36px 0 20px 20px;}
 .mod-works .row li{display:inline-block;padding:0 20px;font-size:16px}
-.mod-works .row input{margin:3px 5px 0 0;float:left;}
+.mod-works .row input{margin:0 5px 0 0;float:left;}
 .mod-works .item{display:block;padding:20px 30px;}
 .mod-works .media{position:relative;}
 
@@ -86,14 +94,14 @@
 .mod-works li.result{padding:10px 0 0;width:280px;text-align:center;}
 .mod-works li.bar{padding:15px 0 0 30px;}
 .mod-works .result dl{display:inline-block;padding:25px 0 0;}
-.mod-works dd{text-align:center;padding-left:0 10px;margin:0 12px;}
+.mod-works dd{text-align:center;margin:0 12px;line-height: 22px;}
 .mod-works .btn{margin:5px;}
 .mod-works .score{border-radius:3px;background-color:#0ea4fb;color:#fff;height:40px;width:84px;line-height:40px;cursor:pointer;}
 
 /*==================比赛预览页业务模块==================================*/
 
 /*mod-platform*/
-.mod-platform{min-height:500px;padding:0 30px;}
+.mod-platform{min-height:500px;padding:0 30px;line-height: 14px;}
 .mod-platform .tools{padding:40px 0 30px;}
 .mod-platform .media{width:286px;height:180px;}
 .mod-platform .text{padding:10px 10px;line-height:22px;}
@@ -104,7 +112,7 @@
 /*==================下一步业务模块==================================*/
 
 /*mod-next*/
-.mod-next{}
+.mod-next{line-height: 14px;}
 .mod-next .number{float:left;margin:20px 0 0;}
 .mod-next .ico{float:none;}
 .mod-next .ui-tab{display:inline-block;border:1px solid #e1e1e1;border-bottom:none;position:relative;}
@@ -113,8 +121,8 @@
 .mod-next .delete-red{position:absolute;top:10px;left:10px;}
 .mod-next .row{padding:10px 0 0 0;}
 .mod-next .row label{padding:0 20px 0 0;display:inline-block;}
-.mod-next .row input{float:left;margin:3px;}
-.mod-next .content{padding:20px 0;margin-top:-1px;min-height:500px;background:#fff;border:1px solid #e1e1e1;}
+.mod-next .row input{float:left;margin:0 6px;}
+.mod-next .content{padding:20px 0;margin-top:-3px;min-height:500px;background:#fff;border:1px solid #e1e1e1;}
 .mod-next dl{padding:20px 0;}
 .mod-next dd{float:left;}
 .mod-next dd:first-child{width:120px;text-align:center;padding:10px 0;}
@@ -127,24 +135,23 @@
 .mod-next .prize span{display:inline-block;float:left;margin:20px 0 0;height:30px;padding:6px;}
 .mod-next .prize .delete-red{top:-8px;left:-8px;}
 .mod-next .prize.setting{float:none;width:500px;text-align:center;}
-.mod-next .setting input[type="file"]{color:transparent;position:absolute;left:0;width:100%;height:120%;margin:-20px 0 0;cursor:pointer;background:transparent;border:none;}
+.mod-next .setting input[type="file"]{position:absolute;left:0;width:100%;height:100%;cursor:pointer;opacity: 0;}
 .mod-next .setting .img{margin:0 30px 0 10px;overflow:hidden;width:110px;height:110px;float:left;border:1px solid #a1a1a1;background-color:#fff;position:relative;}
 .mod-next .setting .text{float:left;text-align:left;}
 .mod-next .setting input[type="text"]{border-radius:4px;background-color:#fff;border:1px solid #a1a1a1;padding:0 12px;height:44px;width:230px;display:block;}
 .mod-next .setting select{margin:20px 0 0;height:44px;}
 .mod-next .btn-add{text-align:center;padding:0 0 28px;cursor:pointer;}
-.mod-next .btn-add h3,.mod-next .setting h3{font-size:58px;margin:0 0 10px 0;padding:30px 0 0;}
+.mod-next .btn-add h3,.mod-next .setting h3{font-size:58px;margin:0 0 10px 0;padding:35px 0 10px;}
 .mod-next .btn-add p{font-size:22px;}
 .mod-next .remind{position:absolute;width:400px;right:-420px;top:0;padding:10px 0 0;font-size:12px;color:#b1b1b1;}
 .mod-next .remind .col1{width:35px;float:left;}
 .mod-next .remind .col2{float:left;}
 .mod-next .tools{text-align:center;}
-.mod-next .btn.blue{padding:0 100px;font-size:20px;}
 
 /*==================新建比赛业务模块==================================*/
 
 /*mod-new*/
-.mod-new input.text{}
+.mod-new{line-height: 14px;}
 .mod-new .content{padding:20px 0;margin-top:-1px;min-height:500px;background:#fff;border:1px solid #e1e1e1;}
 .mod-new dl{padding:20px 0;}
 .mod-new dd{float:left;}
@@ -153,21 +160,46 @@
 .mod-new input.text{width:500px;}
 .mod-new input.timer{height:38px;}
 .mod-new .row{padding:10px 0 0 0;}
-.mod-new .row label{padding:0 20px 0 0;float:left;}
+.mod-new label{float:left;}
+.mod-new .filter label{padding: 0 20px 0 0;}
+.mod-new span.to{padding:0 10px;}
 .mod-new .row label.to{padding:0 15px;}
 .mod-new .row input[type="checkbox",type="radio"]{float:left;margin:3px;}
-.mod-new .row span{display:inline-block;padding:6px 10px;}
 .mod-new .fright{float:right;}
 .mod-new .fleft{float:left;}
-.mod-new .number{margin:0 10px;}
+.mod-new .number{margin:-10px 10px;}
 .mod-new .number,.mod-new .tip span{float:left;}
 .mod-new .tip{width:100%;}
-.mod-new .tip span{font-size:16px;line-height:30px;}
 .mod-new .upimage a,.mod-new .upimage em{float:left;}
-.mod-new .upimage em{padding:0 20px;}
+.mod-new .upimage em{padding:5px 20px;}
 .mod-new .rule{width:790px;height:130px;padding:10px;}
-.mod-new .btn{margin:-5px 0 0;}
 .mod-new .tools{text-align:center;}
-.mod-new .tools .btn.blue{padding:0 100px;font-size:20px;}
-.mod-new .btn{position:relative;overflow:hidden;}
-.mod-new input[type="file"]{position:absolute;left:0;top:0;height:130%;width:100%;color:transparent;margin:-23px 0 0;}
+.mod-new .btn{position:relative;overflow:hidden;margin:-8px 0 0;}
+.mod-new input[type="file"]{position:absolute;left:0;width:100%;height:100%;cursor:pointer;opacity: 0;}
+
+
+/*==================层样式==================================*/
+/*通用层内业务样式*/
+.layer.comm{width:700px;}
+.layer.comm .ft{text-align: center;padding: 10px 0 20px;}
+/*评分弹层内部样式定制*/
+
+.layer.score .bd{padding:50px 0;}
+.layer.score textarea{display:block;width:460px;height: 150px;padding: 10px;margin: 0 auto;}
+
+/*扣分弹层内部样式定制*/
+.layer.reduce h5{font-size: 18px;color: #3f3f3f;font-weight: 500;}
+.layer.reduce p{color:#a9a9a9;font-size: 16px;}
+.layer.reduce input,.layer.reduce textarea{border: 1px solid #a1a1a1;background-color: #f9f9f9;}
+.layer.reduce input{height: 30px;margin: 0 0 0 10px;padding: 0 10px;}
+.layer.reduce textarea{height: 150px;width: 460px;padding: 10px;}
+.layer.reduce .line{margin: 10px 0;}
+.layer.reduce dl{padding:10px 0;}
+.layer.reduce dt{width: 180px;text-align: center;}
+.layer.reduce dd{}
+.layer.reduce dt,.layer.reduce dd{float: left;}
+.layer.reduce .bd{padding:20px 0 0 ;}
+
+
+
+

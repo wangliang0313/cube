@@ -1,6 +1,5 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>首页 - 英语魔方秀</title>
@@ -46,7 +45,7 @@
 					</dd>
 					<dd>
 						<input class="text" type="text" placeholder="再次输入比赛分组的说明"></input>
-						<label><input name="row" type="checkbox"></input> 在比赛页隐藏标题</label>  
+						<em class="desc"><input name="row" type="checkbox"></input>  在比赛页隐藏标题</em>  
 					</dd>
 				</dl>
 				<dl class="line">
@@ -54,7 +53,7 @@
 						报名信息
 					</dd>
 					<dd>
-						<div class="row">
+						<div class="row filter">
 							<label><input name="row" checked type="checkbox"></input> 姓名</label>    
 							<label><input name="row" checked type="checkbox"></input> 手机号</label>
 							<label><input name="row" type="checkbox"></input> 地址</label>
@@ -84,13 +83,13 @@
 					</dd>
 					<dd>
 						<div class="row">
-							<span>每个比赛项目，用户最多对</span>
+							<label>每个比赛项目，用户最多对</label>
 							<div class="number">
 								<a class="left" href="javascript:void(0)"> - </a>
 								<input type="text" value="3"></input>
 								<a class="right" href="javascript:void(0)"> + </a>
 							</div>
-							<span>个参赛作品投票</span>
+							<label>个参赛作品投票</label>
 						</div>
 					</dd>
 				</dl>
@@ -99,19 +98,19 @@
 						报名信息
 					</dd>
 					<dd>
-						<div class="row">
+						<div class="row filter">
 							<label><input name="row" type="radio"></input> 用户投票</label>    
 							<label><input name="row" type="radio"></input> 评委评分</label>
 							<label><input name="row" checked type="radio"></input> 用户投票和评委评分</label>
 						</div>
 						<div class="tip">
-							<span>作品总分=（当前作品票数、得票最高作品的票数x100）x </span>
+							<label>作品总分=（当前作品票数、得票最高作品的票数x100）x </label>
 							<div class="number">
 								<!-- <a class="left" href="javascript:void(0)"> - </a> -->
 								<input class=“no” type="text" value="20%"></input>
 								<!-- <a class="right" href="javascript:void(0)"> + </a> -->
 							</div>
-							<span>+ 评委评分平均分 x </span>
+							<label>+ 评委评分平均分 x </label>
 							<div class="number">
 								<!-- <a class="left" href="javascript:void(0)"> - </a> -->
 								<input type="text" value="80%"></input>
