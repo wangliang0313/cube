@@ -130,7 +130,7 @@
 .mod-next input.text{width:90%;background-color:#f9f9f9;height:38px;border:1px solid #a1a1a1;padding:0 10px;font-size:12px;}
 .mod-next .tip{}
 .mod-next .tip select{width:100%;height:40px;color:#3f3f3f;border:1px solid #a1a1a1;background-color:#fff;}
-.mod-next .tip.prize{width:330px;float:left;margin:0 20px 20px 0;}
+.mod-next .tip.prize{width:330px;height:110px;float:left;margin:0 20px 20px 0;}
 .mod-next .prize h4{background-color:#fff;border:1px solid #a1a1a1;padding:12px;border-radius:4px;}
 .mod-next .prize span{display:inline-block;float:left;margin:20px 0 0;height:30px;padding:6px;}
 .mod-next .prize .delete-red{top:-8px;left:-8px;}

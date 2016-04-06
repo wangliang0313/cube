@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 
 //压缩js代码
-var uglify = require('gulp-uglify');
+// var uglify = require('gulp-uglify');
 
 //服务器
 var connect = require('gulp-connect');
