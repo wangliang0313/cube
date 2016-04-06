@@ -37,7 +37,7 @@
 
 /*默认左箭头*/
 .tip .arrow{position:absolute;height:20px;width:20px;overflow:hidden;top:0;left:-30px;}
-.tip .inner{-webkit-transform:rotate(45deg);border:1px solid #a1a1a1;background:#f9f9f9;height:20px;left:20px;position:absolute;top:0;width:20px;}
+.tip .inner{-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);border:1px solid #a1a1a1;background:#f9f9f9;height:20px;left:20px;position:absolute;top:0;width:20px;}
 
 /*顶部箭头*/
 .tip .arrow.top{top:-20px;left:40px;}
