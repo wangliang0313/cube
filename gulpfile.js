@@ -7,14 +7,14 @@
 var gulp = require('gulp'), //基础库
     imagemin = require('gulp-imagemin'), //图片压缩
     // sass = require('gulp-ruby-sass'), //sass
+    cssver = require('gulp-make-css-url-version'), //css md5版本
+    rebase = require('gulp-css-url-rebase'), //css背景图片地址重定位
     minifycss = require('gulp-minify-css'), //css压缩
     // jshint = require('gulp-jshint'),           //js检查
     uglify = require('gulp-uglify'), //js压缩
     rename = require('gulp-rename'), //重命名
     concat = require('gulp-concat'), //合并文件
-    clean = require('gulp-clean'), //清空文件夹
     tinylr = require('tiny-lr'), //livereload
-    gih = require("gulp-include-html"),
     watch = tinylr(),
     port = 35729,
     connect = require('gulp-connect'),
@@ -34,112 +34,23 @@ var baseSrc = './src/',
 // HTML处理
 gulp.task('html', function() {
     gulp.src(baseSrc + '/**/*.html')
-        // .pipe(gih({
-        //     'public':"./public/bizapp" + version,
-        //     'version':version,
-            
-        //     baseDir:'./html/modules/',
-        //     ignore:\/modules\/
-        // }))
         .pipe(livereload(watch))
-        .pipe(gulp.dest(appDst))
+        .pipe(gulp.dest(appDst+ appExtand))
+        .pipe(livereload(watch));
 });
 
 // 图片处理
 gulp.task('image', function() {
-    // var imgSrc = './src/**/*',
-    //     imgDst = './build/images';
-    // gulp.src(imgSrc)
-    //     .pipe(imagemin())
-    //     .pipe(livereload(watch))
-    //     .pipe(gulp.dest(imgDst));
-
     buildStatic({
-        folders: ['core','images'],
+        folders: ['core', 'images'],
         comppnents: ['view']
     }, 'image')
 })
 
-function buildStatic(roule, suffix) {
-    switch (suffix) {
-        case 'js':
-            build()
-            break
-        case 'css':
-            build()
-            break
-        case 'image':
-            imageBuild()
-            break
-
-    }
-
-    function imageBuild() {
-        var _types = '/**/*.{gif,jpeg,jpg,png,svg,woff,ttf}'
-        // gulp.src(buildTypePaths(baseSrc))
-        //         .pipe(imagemin())
-        //         .pipe(gulp.dest(appDst + appExtand))
-        //         .pipe(livereload(watch));
-
-        // 类库、通用组件及函数打包
-        roule.folders.forEach(function(fordername) {
-            var compSrc = path.join(baseSrc,fordername);
-            // console.log(compSrc+_types);
-            gulp.src(compSrc+_types)
-                .pipe(imagemin())
-                .pipe(gulp.dest(appDst + appExtand + fordername))
-                .pipe(livereload(watch));
-        });
-        // 业务模块打包
-        roule.comppnents.forEach(function(viewforder) {
-            var compSrc = path.join(baseSrc, viewforder);
-            fs.readdirSync(compSrc).forEach(function(fordername) {
-                var filePath = path.join(compSrc, fordername);
-                // console.log(filePath+_types);
-                if (fs.statSync(filePath).isDirectory()) {
-                    gulp.src(filePath+_types)
-                        .pipe(imagemin())
-                        .pipe(gulp.dest(appDst + appExtand + fordername))
-                        .pipe(livereload(watch));
-                }
-            })
-        });
-
-    }
-
-    function build() {
-        // 类库、通用组件及函数打包
-        roule.folders.forEach(function(fordername) {
-            gulp.src(baseSrc + fordername + '/**/*.' + suffix)
-                // .pipe(suffix == 'js' ? uglify() : minifycss())
-                .pipe(concat((fordername == '.' ? 'combo' : fordername) + '.' + suffix))
-                .pipe(gulp.dest(appDst+appExtand))
-                .pipe(livereload(watch));
-        })
-        //业务模块打包
-        roule.comppnents.forEach(function(fordername) {
-            var compSrc = path.join(baseSrc, fordername);
-            // console.log(compSrc);
-            fs.readdirSync(compSrc).forEach(function(filename) {
-                var filePath = path.join(compSrc, filename);
-                // console.log(filename)
-                if (fs.statSync(filePath).isDirectory()) {
-                    gulp.src(filePath + '/**/*.' + suffix)
-                        // .pipe(suffix == 'js' ? uglify() : minifycss())
-                        .pipe(concat('index.' + suffix))
-                        .pipe(gulp.dest(path.join(appDst+appExtand, filename)))
-                        .pipe(livereload(watch));
-                }
-            })
-        })
-    }
-
-}
-
 // css打包处理
 gulp.task('css', function() {
     buildStatic({
-        folders: ['.','core'],
+        folders: ['.', 'core', 'view'],
         comppnents: ['view']
     }, 'css')
 });
@@ -153,7 +64,6 @@ gulp.task('js', function() {
     }, 'js')
 });
 
-
 // 清空图片、样式、js
 gulp.task('clean', function(cb) {
     del([appDst + '/**/*']).then(paths => {
@@ -161,6 +71,7 @@ gulp.task('clean', function(cb) {
         cb();
     });
 });
+
 
 // 监听任务 运行语句 gulp watch
 gulp.task('watch', function() {
@@ -173,7 +84,7 @@ gulp.task('watch', function() {
         gulp.run('devbuild');
 
         // 监听html
-        gulp.watch(baseSrc + '/*.html', function(event) {
+        gulp.watch(baseSrc + '/**/*.html', function(event) {
             gulp.run('html');
         })
 
@@ -188,7 +99,6 @@ gulp.task('watch', function() {
         });
 
         // 监听js
-        // gulp.watch(['./src/js/main.js','./src/js/vendor/*.js'], function(){
         gulp.watch(baseSrc + '/**/*.js', function() {
             gulp.run('js');
         });
@@ -199,7 +109,7 @@ gulp.task('watch', function() {
 gulp.task('webserver', function() {
     connect.server({
         port: 8700,
-        host:'127.0.0.1',
+        host: '127.0.0.1',
         livereload: false,
         root: [appDst]
     })
@@ -215,11 +125,106 @@ gulp.task('webserver', function() {
 gulp.task('build', sequence('clean',['js', 'css', 'image']));
 gulp.task('devbuild', sequence('clean',['js', 'css', 'image', 'html']));
 
+
 // 默认任务 清空图片、样式、js并重建 运行语句 gulp
 gulp.task('default', function() {
     gulp.start(['watch', 'webserver']);
 });
 
 
+// 构建静态资源入口函数
+function buildStatic(roule, suffix) {
+    switch (suffix) {
+        case 'js':
+            build()
+            break
+        case 'css':
+            build()
+            break
+        case 'image':
+            imageBuild()
+            break
 
+    }
+    // 图片打包压缩
+    function imageBuild() {
+        var _types = '/**/*.{gif,jpeg,jpg,png,svg,woff,ttf}'
+        gulp.src(baseSrc+_types)
+                .pipe(imagemin())
+                .pipe(gulp.dest(appDst + appExtand))
+                .pipe(livereload(watch));
 
+        // // 类库、通用组件及函数打包
+        // roule.folders.forEach(function(fordername) {
+        //     var compSrc = path.join(baseSrc,fordername);
+        //     // console.log(compSrc+_types);
+        //     gulp.src(compSrc+_types)
+        //         .pipe(imagemin())
+        //         .pipe(gulp.dest(appDst + appExtand + fordername))
+        //         .pipe(livereload(watch));
+        // });
+        // // 业务模块打包
+        // roule.comppnents.forEach(function(viewforder) {
+        //     var compSrc = path.join(baseSrc, viewforder);
+        //     fs.readdirSync(compSrc).forEach(function(fordername) {
+        //         var filePath = path.join(compSrc, fordername);
+        //         // console.log(filePath+_types);
+        //         if (fs.statSync(filePath).isDirectory()) {
+        //             gulp.src(filePath+_types)
+        //                 .pipe(imagemin())
+        //                 .pipe(gulp.dest(appDst + appExtand + fordername))
+        //                 .pipe(livereload(watch));
+        //         }
+        //     })
+        // });
+        
+    }
+    // JS、CSS打包压缩
+    function build() {
+        // 类库、通用组件及函数打包
+        roule.folders.forEach(function(fordername) {
+            var compSrc = path.join(baseSrc, fordername);
+            var result = gulp.src(compSrc + '/**/*.' + suffix);
+            // console.log(compSrc);
+            if (suffix == 'js') {
+                result = result.pipe(uglify());
+            } else if (suffix == 'css') {
+                result = result.pipe(cssver())
+                    .pipe(rebase({root:compSrc}))
+                    .pipe(minifycss());
+                    // {root:compSrc}
+            }
+            result.pipe(concat((fordername == '.' ? 'combo' : fordername) + '.' + suffix))
+                .pipe(gulp.dest(appDst + appExtand + fordername))
+                .pipe(livereload(watch));
+        })
+        //业务模块打包
+        roule.comppnents.forEach(function(fordername) {
+            var compSrc = path.join(baseSrc, fordername);
+            // console.log(compSrc);
+            fs.readdirSync(compSrc).forEach(function(innerfordername) {
+                var filePath = path.join
+                (compSrc, innerfordername);
+                // console.log(filename)
+                if (fs.statSync(filePath).isDirectory()) {
+                    var result = gulp.src(filePath + '/**/*.' + suffix);
+
+                    if (suffix == 'js') {
+                        result = result.pipe(uglify());
+                    } else if (suffix == 'css') {
+                        // console.log(rebase({root: baseSrc}));
+                        result = result.pipe(cssver())
+                            .pipe(rebase({root:filePath}))
+                            .pipe(minifycss());
+                    }
+
+                    result.pipe(suffix == 'js' ? uglify() : minifycss())
+                        .pipe(concat('index.' + suffix))
+                        .pipe(gulp.dest(path.join(appDst + appExtand + fordername, innerfordername)))
+                        .pipe(livereload(watch));
+                }
+            })
+        })
+    }
+
+}
