@@ -50,8 +50,8 @@ gulp.task('image', function() {
 // css打包处理
 gulp.task('css', function() {
     buildStatic({
-        folders: ['.', 'core', 'view'],
-        comppnents: ['view']
+        folders: ['view/h5/core', 'view/pc/core', 'view/h5', 'view/pc'],
+        comppnents: ['view/h5', 'view/pc']
     }, 'css')
 });
 
@@ -59,8 +59,8 @@ gulp.task('css', function() {
 gulp.task('js', function() {
 
     buildStatic({
-        folders: ['core', 'plugin'],
-        comppnents: ['view']
+        folders: ['view/h5/core', 'view/pc/core', 'view/h5', 'view/pc'],
+        comppnents: ['view/h5', 'view/pc']
     }, 'js')
 });
 
@@ -194,7 +194,7 @@ function buildStatic(roule, suffix) {
                     .pipe(minifycss());
                     // {root:compSrc}
             }
-            result.pipe(concat((fordername == '.' ? 'combo' : fordername) + '.' + suffix))
+            result.pipe(concat((fordername == '.' ? 'combo' : 'index') + '.' + suffix))
                 .pipe(gulp.dest(appDst + appExtand + fordername))
                 .pipe(livereload(watch));
         })
