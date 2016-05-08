@@ -2,20 +2,27 @@
 body{background:#fff;color:#515151;}
 input{background-color:transparent;border:none;}
 input:focus{outline:none;}
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover{text-decoration:underline;}
+
 /*clearfix*/
-.clearfix:after,div:after,ul:after,li:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix:after,div:after,ul:after,li:after{bd:".";display:block;height:0;clear:both;visibility:hidden;}
 
 /*common*/
-.main{max-width: 786px;margin: 0 auto;}
+.main{max-width:786px;margin:0 auto;}
 
 /*ico*/
 .ico{width:.28rem;height:.28rem;display:inline-block;margin:0 .03rem 0 0;}
 
 /*btn*/
-.btn{display:inline-block;cursor:pointer;margin:0 .10rem;line-height:.16rem;border-radius:.08rem;color:#787878;border:1px solid #a7a7a7;background-color:#fff;padding:.06rem .10rem;font-size:.28rem;}
+.btn{text-align:center;display:inline-block;cursor:pointer;border:none;border-radius:.20rem .10rem;background:#ffed54;box-shadow:0.04rem 0.04rem 0rem 0.02rem #fae000;margin:0 0.10rem .10rem 0;}
+.btn_index_nomal{width:3rem;height:.90rem;line-height:.90rem;font-size:.38rem;color:#745010;font-weight:800;}
 
 /*line*/
 .line{border-bottom:.01rem solid #f0eff1;}
+
+/*-----------------------------搜索---------------------------------*/
 
 /*顶部搜索*/
 .search{text-align:center;}
@@ -25,8 +32,8 @@ input:focus{outline:none;}
 .search .ico_r{position:absolute;right:.18rem;top:.14rem;}
 .search .ico_l{position:absolute;left:.18rem;top:.14rem;}
 .search .bar.result{width:4.6rem;}
-@media screen and (min-width: 768px){
-	.search .bar.result{width: 74%;}
+@media screen and (min-width:768px){
+	.search .bar.result{width:74%;}
 }
 .search .bar.result .btn{position:absolute;top:0;right:-1.24rem;width:1rem;height:.60rem;}
 
@@ -40,3 +47,68 @@ input:focus{outline:none;}
 .searchlist .tip h4{margin:.22rem 0 0;}
 .searchlist .tip em{font-size:.24rem;}
 .searchlist .desc span{font-size:.30rem;color:#a7a7a7;padding:.10rem 0;}
+
+/*header*/
+.main header{}
+.main header{position:relative;}
+.main header .mask,.main header h3{position:absolute;}
+.main header img.auto{width:100%;}
+.main header .bar{margin:-.75rem 0 0;height:.70rem;position:relative;overflow:hidden;}
+.main header .mask{background-color:#00a0fc;width:100%;height:100%;opacity:.7;}
+.main header h3{font-size:.36rem;color:#fff;line-height:.70rem;padding:0 .30rem;}
+.main header .finish{position:absolute;top:0;width:100%;height:100%;}
+.main header .finish .mask{background-color:#999;}
+.main header .finish .text{text-align:center;margin-top:26%;width:100%;padding:0;font-size:0.48rem;}
+
+/*tip*/
+.main header .tip{background:#ffed54;position:absolute;top:0;right:.30rem;padding:.20rem .32rem;border-radius:0 0 .06rem .06rem;border:none;text-align:center;line-height:.34rem;}
+.main header .tip h4{font-size:.28rem;font-weight:500;}
+.main header .tip p{font-size:.24rem;font-weight:500;}
+
+/*----------------------------颁奖页---------------------------------*/
+.lotto,.lotto .extend{background:#0fa2f9;}
+.lotto{position:relative;}
+@media screen and (min-width:768px){
+	.lotto{height:30rem;overflow:hidden;}
+}
+@media screen and (min-width:414px){
+	.lotto{height:34rem;overflow:hidden;}
+}
+@media screen and (min-width:375px){
+	.lotto{height:35rem;overflow:hidden;}
+}
+@media screen and (min-width:320px){
+	.lotto{height:36rem;overflow:hidden;}
+}
+.lotto img.auto{width:100%;}
+.lotto .bd{position:absolute;top:0;width:100%;overflow:hidden;}
+
+/*button ad*/
+.lotto .title_ad{text-align:center;padding:0.50rem 0 0.45rem;}
+.lotto .title_ad img{width:2.8rem;}
+
+/*tab*/
+.lotto .tab,.lotto .slider{padding:0.30rem .24rem;background:#0fa2f9;}
+.lotto .tab ul,.lotto .slider ul{	/*height: 1.03rem;*/
+width:100rem;}
+.lotto .tab li{display:inline-block;border-radius:.12rem;border:1px solid #0094ec;text-align:center;background-color:#3cb5fc;color:#fff;padding:.10rem .20rem;margin:0 .16rem;line-height:.42rem;}
+.lotto .slider li{display:inline-block;width:2.56rem;overflow:hidden;}
+.lotto .slider li .text{width:2.46rem;color:#fff;line-height:.40rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lotto .slider li .text:hover{text-overflow:inherit;overflow:visible;}
+.lotto .slider .panel{height:1.56rem;width:100%;overflow:hidden;background:#fff;border-radius:.03rem;border:1px solid #0094ec;color:#fff;}
+.lotto ul.dot{padding:0 .20rem;}
+.lotto ul.dot li{list-style:initial;}
+.lotto .content{}
+.lotto .item{}
+.lotto .tr{border-radius:0 5em 0 0;}
+.lotto .tl{border-radius:5em 0 0 0;}
+.lotto .card{line-height:.4rem;background:#fff;padding:.6rem .4rem;margin:.80rem .37rem 0;border:2px solid #099af0;min-height:5rem;position:relative;}
+.lotto .logo{position:absolute;width:2rem;}
+.lotto .logo.trophy{top:-0.36rem;left:-0.42rem;}
+.lotto .logo.star{top:-0.88rem;right:-0.38rem;}
+.lotto .card h4,.lotto .card p{padding:.22rem 0;}
+.lotto .card h4{font-size:.38rem;font-weight:500;text-align:center;}
+.lotto .card p{color:#7f7f7f;}
+
+/*footer*/
+.lotto footer{font-size:.26rem;color:#034972;padding:.12rem .40rem .40rem;line-height:.30rem;}
