@@ -94,7 +94,7 @@ gulp.task('watch', function() {
         });
 
         // 监听images
-        gulp.watch([baseSrc + '/**/*.png', baseSrc + '/**/*.gif', baseSrc + '/**/*.jpg', baseSrc + '/**/*.svg'], function() {
+        gulp.watch(baseSrc+'/**/*.{gif,jpeg,jpg,png,svg,woff,ttf}', function() {
             gulp.run('image');
         });
 
@@ -191,7 +191,7 @@ function buildStatic(roule, suffix) {
             } else if (suffix == 'css') {
                 result = result.pipe(cssver())
                     .pipe(rebase({root:compSrc}))
-                    .pipe(minifycss());
+                    // .pipe(minifycss());
                     // {root:compSrc}
             }
             result.pipe(concat((fordername == '.' ? 'combo' : 'index') + '.' + suffix))
@@ -215,7 +215,7 @@ function buildStatic(roule, suffix) {
                         // console.log(rebase({root: baseSrc}));
                         result = result.pipe(cssver())
                             .pipe(rebase({root:filePath}))
-                            .pipe(minifycss());
+                            // .pipe(minifycss());
                     }
 
                     result.pipe(suffix == 'js' ? uglify() : minifycss())

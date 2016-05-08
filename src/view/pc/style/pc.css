@@ -19,7 +19,7 @@
 .btn.blue{border-radius:3px;background-color:#0ea4fb;color:#fff;line-height:50px;font-size:20px;padding:0 84px;}
 
 /*ico*/
-.ico{background:no-repeat url("bg_ico.png");width:16px;height:16px;display:inline-block;float:left;margin:0 3px 0 0;}
+.ico{background:no-repeat url(bg_ico.png);width:16px;height:16px;display:inline-block;float:left;margin:0 3px 0 0;}
 .ico.delete{background-position:0 0;}
 .ico.modify{background-position:0 -100px;}
 .ico.delete-red{background-position:0 -352px;}
