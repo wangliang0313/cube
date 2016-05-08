@@ -14,6 +14,7 @@ var gulp = require('gulp'), //基础库
     concat = require('gulp-concat'), //合并文件
     clean = require('gulp-clean'), //清空文件夹
     tinylr = require('tiny-lr'), //livereload
+    gih = require("gulp-include-html"),
     watch = tinylr(),
     port = 35729,
     connect = require('gulp-connect'),
@@ -27,12 +28,19 @@ var gulp = require('gulp'), //基础库
 // 全局配置参数
 var baseSrc = './src/',
     appDst = './build/',
-    appExtand = '/static/v2/'
+    appExtand = '/static/'
 
 
 // HTML处理
 gulp.task('html', function() {
     gulp.src(baseSrc + '/**/*.html')
+        // .pipe(gih({
+        //     'public':"./public/bizapp" + version,
+        //     'version':version,
+            
+        //     baseDir:'./html/modules/',
+        //     ignore:\/modules\/
+        // }))
         .pipe(livereload(watch))
         .pipe(gulp.dest(appDst))
 });
