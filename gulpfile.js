@@ -28,7 +28,7 @@ var gulp = require('gulp'), //基础库
 // 全局配置参数
 var baseSrc = './src/',
     appDst = './build/',
-    appExtand = '/static/'
+    appExtand = ''
 
 
 // HTML处理
@@ -50,7 +50,7 @@ gulp.task('image', function() {
 // css打包处理
 gulp.task('css', function() {
     buildStatic({
-        folders: ['view/h5/core', 'view/pc/core', 'view/h5', 'view/pc'],
+        // folders: ['view/h5/core', 'view/pc/core', 'view/h5', 'view/pc'],
         comppnents: ['view/h5', 'view/pc']
     }, 'css')
 });
@@ -59,7 +59,7 @@ gulp.task('css', function() {
 gulp.task('js', function() {
 
     buildStatic({
-        folders: ['view/h5/core', 'view/pc/core', 'view/h5', 'view/pc'],
+        // folders: ['view/h5/core', 'view/pc/core', 'view/h5', 'view/pc'],
         comppnents: ['view/h5', 'view/pc']
     }, 'js')
 });
@@ -182,7 +182,7 @@ function buildStatic(roule, suffix) {
     // JS、CSS打包压缩
     function build() {
         // 类库、通用组件及函数打包
-        roule.folders.forEach(function(fordername) {
+        !!roule.folders&&roule.folders.forEach(function(fordername) {
             var compSrc = path.join(baseSrc, fordername);
             var result = gulp.src(compSrc + '/**/*.' + suffix);
             // console.log(compSrc);
@@ -192,14 +192,13 @@ function buildStatic(roule, suffix) {
                 result = result.pipe(cssver())
                     .pipe(rebase({root:compSrc}))
                     // .pipe(minifycss());
-                    // {root:compSrc}
             }
             result.pipe(concat((fordername == '.' ? 'combo' : 'index') + '.' + suffix))
                 .pipe(gulp.dest(appDst + appExtand + fordername))
                 .pipe(livereload(watch));
         })
         //业务模块打包
-        roule.comppnents.forEach(function(fordername) {
+        !!roule.comppnents&&roule.comppnents.forEach(function(fordername) {
             var compSrc = path.join(baseSrc, fordername);
             // console.log(compSrc);
             fs.readdirSync(compSrc).forEach(function(innerfordername) {
