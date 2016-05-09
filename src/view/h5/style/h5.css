@@ -17,6 +17,7 @@ a:hover{text-decoration:underline;}
 
 /*btn*/
 .btn{text-align:center;display:inline-block;cursor:pointer;border:none;border-radius:.20rem .10rem;background:#ffed54;box-shadow:0.04rem 0.04rem 0rem 0.02rem #fae000;margin:0 0.10rem .10rem 0;}
+.btn_search{display:inline-block;cursor:pointer;margin:0 .10rem;line-height:.16rem;border-radius:.08rem;color:#787878;border:1px solid #a7a7a7;background-color:#fff;padding:.06rem .10rem;font-size:.28rem;}
 .btn_index_nomal{width:3rem;height:.90rem;line-height:.90rem;font-size:.38rem;color:#745010;font-weight:800;}
 
 /*line*/
@@ -35,7 +36,7 @@ a:hover{text-decoration:underline;}
 @media screen and (min-width:768px){
 	.search .bar.result{width:74%;}
 }
-.search .bar.result .btn{position:absolute;top:0;right:-1.24rem;width:1rem;height:.60rem;}
+.search .bar.result .btn{position:absolute;top:0;right:-1.24rem;width:1rem;height:.60rem;box-shadow: none;border-radius: .06rem;border:1px solid #a7a7a7;background:#fff;font-size: .28rem;color: #565656;}
 
 /*搜索结果页*/
 .searchlist{}
